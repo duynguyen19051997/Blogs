@@ -11,15 +11,15 @@ export const HomePage = () => {
       <Container className="mt-3 mb-3">
         <Row>
           <Col
-            sm={3}
-            md={3}
-            lg={2}
-            xl={2}
+            sm={4}
+            md={4}
+            lg={3}
+            xl={3}
             style={{ padding: "0", margin: "0" }}
           >
             <LeftMenu />
           </Col>
-          <Col sm={9} md={9} lg={10} xl={10}>
+          <Col sm={8} md={8} lg={9} xl={9}>
             <Blogs />
           </Col>
         </Row>

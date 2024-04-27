@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const BlogItem = ({ id }) => {
+export const BlogItem = ({ id, title, description }) => {
   return (
     <article>
-      <h2>Title</h2>
+      <h2>{title}</h2>
       <div>
         <p>
-          Description...
+          {description}...
           <Link to={`/blogs/${id}`} className="btn btn-light">
             Detail
           </Link>

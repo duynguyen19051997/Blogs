@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
-export const LeftMenu = () => {
-  const arr = [
-    { id: 1, category: "Media Object" },
-    { id: 2, category: "Modal" },
-    { id: 3, category: "Nav" },
-    { id: 4, category: "Navbar" },
-  ];
+const categoriesLink =
+  "https://662a6ae567df268010a3d82c.mockapi.io/api/v1/categories";
 
+export const LeftMenu = () => {
   const [currentCategory, setCurrentCategory] = useState(1);
+  const [categories, setCategories] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(categoriesLink, {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setCategories(data);
+      setCurrentCategory(data[0].id);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <ListGroup as="ul" className="bg-body-tertiary">
-      {arr.map((x) => (
+      {categories.map((x) => (
         <ListGroup.Item
           key={x.id}
           onClick={() => setCurrentCategory(x.id)}
           active={currentCategory === x.id}
         >
-          {x.category}
+          {x.name}
         </ListGroup.Item>
       ))}
     </ListGroup>
