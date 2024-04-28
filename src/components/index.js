@@ -6,6 +6,7 @@ import { BlogSearch } from "./BlogSearch";
 import { Blogs } from "./Blogs";
 import { Header } from "./Header";
 import { LeftMenu } from "./LeftMenu";
+import { Loading } from "./Loading";
 
 export {
   BlogDetail,
@@ -16,4 +17,5 @@ export {
   Blogs,
   Header,
   LeftMenu,
+  Loading,
 };

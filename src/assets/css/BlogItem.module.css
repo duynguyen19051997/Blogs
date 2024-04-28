@@ -1,0 +1,4 @@
+.blog_item_title {
+  display: flex;
+  pointer-events: auto;
+}

@@ -1,40 +1,22 @@
-import React, { useEffect, useState } from "react";
-import classes from "../assets/css/Blogs.module.css";
+import React from "react";
 import { BlogItem, BlogPagination } from "./index";
 
-const categoriesLink =
-  "https://662a6ae567df268010a3d82c.mockapi.io/api/v1/categories/1/blogs";
+import classes from "../assets/css/Blogs.module.css";
+import { useSelector } from "react-redux";
+import { getOrderBy } from "../utils/orderBy";
 
-export const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(categoriesLink, {
-        method: "GET",
-        headers: { "content-type": "application/json" },
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setBlogs(data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+export const Blogs = ({ blogs }) => {
+  const { sortBy, orderBy } = useSelector((store) => store.blog);
 
   return (
     <section className="mt-3" style={{ width: "99%", margin: "0 auto" }}>
+      <div className={`${classes["header_blogs_container"]} mb-3`}>
+        <span className="float-sm-end" style={{ fontStyle: "italic" }}>
+          Sort: {getOrderBy(sortBy, orderBy)}
+        </span>
+      </div>
       <div className={`${classes["blogs_container"]} mb-3`}>
-        {blogs.map((x) => (
-          <BlogItem {...x} />
-        ))}
+        {blogs && blogs.map((x) => <BlogItem key={x.id} {...x} />)}
       </div>
       <BlogPagination />
     </section>
