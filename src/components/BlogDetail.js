@@ -1,7 +1,7 @@
 import React from "react";
 import { BsCalendar3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { formatDate } from "../utils/datetime";
+import { formatDate } from "../utils/dateTime.js";
 import { Button } from "react-bootstrap";
 
 export const BlogDetail = ({ createdAt, title, description }) => {
