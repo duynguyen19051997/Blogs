@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 import { getBlogById } from "../slices/blogSlice";
 
 export const DetailPage = () => {
+  const dispatch = useDispatch();
+
   const { blog, isLoadingBlog } = useSelector((store) => store.blog);
   const { id } = useParams();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBlogById(id));
