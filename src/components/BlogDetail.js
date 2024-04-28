@@ -1,8 +1,8 @@
 import React from "react";
 import { BsCalendar3 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { formatDate } from "../utils/dateTime";
 import { Button } from "react-bootstrap";
+import { formatDate } from "../utils/date_time";
 
 export const BlogDetail = ({ createdAt, title, description }) => {
   const navigate = useNavigate();

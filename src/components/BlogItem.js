@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { BsCalendar3 } from "react-icons/bs";
 
 import classes from "../assets/css/BlogItem.module.css";
-import { formatDate } from "../utils/dateTime";
+import { formatDate } from "../utils/date_time";
 
 export const BlogItem = ({ id, title, description, createdAt }) => {
   return (
